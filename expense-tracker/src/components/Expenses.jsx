@@ -13,8 +13,7 @@ const Expenses = (props) => {
                         title={expense.title}
                         amount={expense.amount}
                         date={expense.date}
-                    >
-                    </ExpenseItem>
+                    />
                 ))
             }
         </section>
