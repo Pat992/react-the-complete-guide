@@ -7,6 +7,7 @@ import './Expenses.css';
 
 const Expenses = (props) => {
     const [filterDate, setFilterDate] = useState('2022');
+    let expensesContent = <p>No expenses found</p>
 
     const onUpdateFilterDate = (date) => {
         setFilterDate(date);
@@ -14,20 +15,22 @@ const Expenses = (props) => {
 
     const filteredExpenses = props.expenses.filter(expense => expense.date.getFullYear().toString() === filterDate);
 
+    expensesContent = filteredExpenses.length === 0 ?
+        <p>No expenses found</p> :
+        filteredExpenses.map(expense => (
+            <ExpenseItem
+                key={expense.id}
+                title={expense.title}
+                amount={expense.amount}
+                date={expense.date}
+            />
+        ))
+
     return (
         <div>
-            <ExpensesFilter onUpdateFilterDate={onUpdateFilterDate} currentSelected={filterDate} />
             <Card className='expenses'>
-                {
-                    filteredExpenses.map(expense => (
-                        <ExpenseItem
-                            key={expense.id}
-                            title={expense.title}
-                            amount={expense.amount}
-                            date={expense.date}
-                        />
-                    ))
-                }
+                <ExpensesFilter onUpdateFilterDate={onUpdateFilterDate} currentSelected={filterDate} />
+                {expensesContent}
             </Card>
         </div>
     );
