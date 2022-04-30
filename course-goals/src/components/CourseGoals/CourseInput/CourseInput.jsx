@@ -60,16 +60,6 @@ const CourseInput = props => {
     props.onAddGoal(enteredValue);
   };
 
-  // return (
-  //   <form onSubmit={formSubmitHandler}>
-  //     <FormControl invalid={!isValid}>
-  //       <label>Course Goal</label>
-  //       <input type="text" onChange={goalInputChangeHandler} value={enteredValue} />
-  //     </FormControl>
-  //     <Button type="submit">Add Goal</Button>
-  //   </form>
-  // );
-
   return (
     <form onSubmit={formSubmitHandler}>
       <FormControl className={!isValid && 'invalid'}>
@@ -79,6 +69,16 @@ const CourseInput = props => {
       <Button type="submit">Add Goal</Button>
     </form>
   );
+
+  // return (
+  //   <form onSubmit={formSubmitHandler}>
+  //     <FormControl invalid={!isValid}>
+  //       <label>Course Goal</label>
+  //       <input type="text" onChange={goalInputChangeHandler} value={enteredValue} />
+  //     </FormControl>
+  //     <Button type="submit">Add Goal</Button>
+  //   </form>
+  // );
 
   // return (
   //   <form onSubmit={formSubmitHandler}>
