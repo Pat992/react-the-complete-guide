@@ -1,0 +1,18 @@
+{
+    "React Template": {
+        "prefix": "reactTemplate",
+        "body": [
+            "// @ts-check",
+            "import { useState } from \"react\";",
+            "",
+            "const ${1:name} = (props) => {",
+            "\treturn (",
+            "\t\t<div>",
+            "\t\t</div>",
+            "\t);",
+            "}",
+            "",
+            "export default ${1:name};"
+        ]
+    }
+}
