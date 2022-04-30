@@ -3,7 +3,7 @@
         "prefix": "reactTemplate",
         "body": [
             "// @ts-check",
-            "import { useState } from \"react\";",
+            "import { useState } from 'react';",
             "",
             "const ${1:name} = (props) => {",
             "\treturn (",
