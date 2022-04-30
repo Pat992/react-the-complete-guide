@@ -21,7 +21,7 @@ const Button = styled.button`
 }
 `;
 
-// this is still beaing used from styled components, strange...
+// this is still being used from styled components, strange...
 // const Button = props => {
 //   return (
 //     <button type={props.type} className="button" onClick={props.onClick}>
