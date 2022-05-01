@@ -19,6 +19,9 @@ const AddUser = (props) => {
         if (+enteredAge < 1) {
             return;
         }
+
+        props.addUserHandler(enteredName, enteredAge);
+
         setEnteredName(prevSnapshot => '');
         setEnteredAge(prevSnapshot => '');
     }
