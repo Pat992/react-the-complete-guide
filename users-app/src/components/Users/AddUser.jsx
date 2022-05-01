@@ -1,7 +1,8 @@
 // @ts-check
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Button from '../UI/Button';
 import Card from '../UI/Card';
+import ErrorModal from '../UI/ErrorModal';
 
 import styles from './AddUser.module.css';
 
@@ -35,15 +36,18 @@ const AddUser = (props) => {
     }
 
     return (
-        <Card className={styles.input}>
-            <form onSubmit={addUserHandler}>
-                <label htmlFor="username">Username</label>
-                <input type="text" name='username' id='username' value={enteredName} onChange={inputNameHandler} />
-                <label htmlFor="age">Age</label>
-                <input type="number" id='age' name='age' value={enteredAge} onChange={inputAgeHandler} />
-                <Button type='submit'>Add user</Button>
-            </form>
-        </Card>
+        <React.Fragment>
+            <ErrorModal title='An error occured!' />
+            <Card className={styles.input}>
+                <form onSubmit={addUserHandler}>
+                    <label htmlFor="username">Username</label>
+                    <input type="text" name='username' id='username' value={enteredName} onChange={inputNameHandler} />
+                    <label htmlFor="age">Age</label>
+                    <input type="number" id='age' name='age' value={enteredAge} onChange={inputAgeHandler} />
+                    <Button type='submit'>Add user</Button>
+                </form>
+            </Card>
+        </React.Fragment>
     );
 };
 export default AddUser;
