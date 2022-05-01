@@ -1,5 +1,6 @@
 // @ts-check
 import { useState } from 'react';
+import Button from '../UI/Button';
 import Card from '../UI/Card';
 
 import styles from './AddUser.module.css';
@@ -16,7 +17,7 @@ const AddUser = (props) => {
                 <input type="text" name='username' id='username' />
                 <label htmlFor="age">Age</label>
                 <input type="number" id='age' name='age' />
-                <button type='submit'>Add user</button>
+                <Button type='submit'>Add user</Button>
             </form>
         </Card>
     );
