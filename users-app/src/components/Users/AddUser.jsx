@@ -9,22 +9,36 @@ import styles from './AddUser.module.css';
 const AddUser = (props) => {
     const [enteredName, setEnteredName] = useState('');
     const [enteredAge, setEnteredAge] = useState('');
+    const [errorState, setErrorState] = useState({ hasError: false, errorTitle: '', errorText: '' });
 
     const addUserHandler = (event) => {
         event.preventDefault();
 
         if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
+            setError('Invalid input', 'Please enter a name and age');
             return;
         }
 
         if (+enteredAge < 1) {
+            setError('Invalid input', 'Age must be bigger then 0');
             return;
         }
+        setError('', '');
 
         props.addUserHandler(enteredName, enteredAge);
 
         setEnteredName(prevSnapshot => '');
         setEnteredAge(prevSnapshot => '');
+    }
+
+    const setError = (title, msg) => {
+        setErrorState(prevSnapshot => {
+            return {
+                hasError: title.trim().length === 0 ? false : true,
+                errorTitle: title,
+                errorText: msg
+            };
+        });
     }
 
     const inputNameHandler = (event) => {
@@ -37,7 +51,7 @@ const AddUser = (props) => {
 
     return (
         <React.Fragment>
-            <ErrorModal title='An error occured!' />
+            {errorState.hasError && <ErrorModal title={errorState.errorTitle} msg={errorState.errorText} closeModal={() => setError('', '')} />}
             <Card className={styles.input}>
                 <form onSubmit={addUserHandler}>
                     <label htmlFor="username">Username</label>
