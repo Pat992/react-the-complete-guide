@@ -29,7 +29,8 @@ const passwordReducer = (snapshot, action) => {
 }
 
 const Login = (props) => {
-  // ---------------------------------- useReducer for states using other states -----------------------------------------
+  // ---------------------------------- useReducer for states using multiple vals -----------------------------------------
+  // use for: related states/data, complex state updates
   const [emailState, dispatchEmail] = useReducer(emailReducer, { value: '', isValid: null });
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, { value: '', isValid: null })
   // ---------------------------------------------------------------------------------------------------------------------
