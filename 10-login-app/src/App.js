@@ -13,6 +13,7 @@ const App = () => {
     if (storedLoggedIn === '1') {
       setIsLoggedIn(snapshot => true);
     }
+    // With empty array, useEffect runs only the first time
   }, []);
 
   const loginHandler = (email, password) => {
