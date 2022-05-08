@@ -13,9 +13,17 @@ const Login = (props) => {
 
   // useEffect on every change on email and password
   useEffect(() => {
-    setFormIsValid(
-      enteredEmail.includes('@') && enteredPassword.trim().length > 6
-    );
+    // add delay to not run on every keystroke
+    const timer = setTimeout(() => {
+      setFormIsValid(
+        enteredEmail.includes('@') && enteredPassword.trim().length > 6
+      );
+    }, 500);
+    // Cleanup function before running useEffect again
+    return () => {
+      // Clear the timer -> so a new timer will not be added
+      clearTimeout(timer);
+    };
   }, [enteredEmail, enteredPassword]);
 
   const emailChangeHandler = (event) => {
