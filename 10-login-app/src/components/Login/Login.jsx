@@ -6,7 +6,7 @@ import Card from '../UI/Card/Card';
 // @ts-ignore
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
-import AuthContext from '../../store/auth-context';
+import { AuthContext } from '../../store/auth-context';
 
 // useReducer functions
 const emailReducer = (snapshot, action) => {
@@ -93,7 +93,6 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    // @ts-ignore
     context.onLogin(emailState.value, passwordState.value);
   };
 
