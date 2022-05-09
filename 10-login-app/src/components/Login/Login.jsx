@@ -1,11 +1,12 @@
 //@ts-check
-import { useEffect, useReducer, useState } from 'react';
+import { useContext, useEffect, useReducer, useState } from 'react';
 
 import Card from '../UI/Card/Card';
 
 // @ts-ignore
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
+import AuthContext from '../../store/auth-context';
 
 // useReducer functions
 const emailReducer = (snapshot, action) => {
@@ -29,6 +30,7 @@ const passwordReducer = (snapshot, action) => {
 }
 
 const Login = (props) => {
+  const context = useContext(AuthContext);
   // ---------------------------------- useReducer for states using multiple vals -----------------------------------------
   // use for: related states/data, complex state updates
   const [emailState, dispatchEmail] = useReducer(emailReducer, { value: '', isValid: null });
@@ -91,7 +93,8 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, passwordState.value);
+    // @ts-ignore
+    context.onLogin(emailState.value, passwordState.value);
   };
 
   return (
