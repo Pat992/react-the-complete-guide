@@ -7,13 +7,14 @@ import styles from './Header.module.css';
 
 // @ts-ignore
 import image from '../../assets/meals.jpg';
+import CartButton from './CartButton';
 
 const Header = (props) => {
     return (
         <Fragment>
             <header className={styles.header}>
                 <h1>React Meals</h1>
-                <button>Cart</button>
+                <CartButton />
             </header>
             <div className={styles['main-image']}>
                 <img src={image} alt="A table full of delicious food" />
