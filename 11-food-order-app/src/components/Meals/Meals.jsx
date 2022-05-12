@@ -1,13 +1,17 @@
 // @ts-check
-
+import { Fragment } from 'react';
+import AvailableMeals from './AvailableMeals';
+import MealsSummary from './MealsSummary';
 
 // @ts-ignore
 import styles from './Meals.module.css';
 
-const Meals = (props) => {
+const Meals = () => {
     return (
-        <div>
-        </div>
+        <Fragment>
+            <MealsSummary />
+            <AvailableMeals />
+        </Fragment>
     );
 };
 
