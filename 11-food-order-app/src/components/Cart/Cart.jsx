@@ -1,4 +1,5 @@
 // @ts-check
+import Modal from '../UI/Modal';
 
 // @ts-ignore
 import styles from './Cart.module.css';
@@ -16,7 +17,7 @@ const Cart = (props) => {
     }</ul>;
 
     return (
-        <div>
+        <Modal>
             {CART_ITEMS}
             <div className={styles.total}>
                 <span>Total amount</span>
@@ -26,7 +27,7 @@ const Cart = (props) => {
                 <button className={styles['button--alt']}>Close</button>
                 <button className={styles.button}>Order</button>
             </div>
-        </div>
+        </Modal>
     );
 };
 
