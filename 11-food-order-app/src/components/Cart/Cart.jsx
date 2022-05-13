@@ -17,14 +17,14 @@ const Cart = (props) => {
     }</ul>;
 
     return (
-        <Modal>
+        <Modal onBackdropClickHandler={props.onHideCart}>
             {CART_ITEMS}
             <div className={styles.total}>
                 <span>Total amount</span>
                 <span>35.69</span>
             </div>
             <div className={styles.actions}>
-                <button className={styles['button--alt']}>Close</button>
+                <button onClick={props.onHideCart} className={styles['button--alt']}>Close</button>
                 <button className={styles.button}>Order</button>
             </div>
         </Modal>
