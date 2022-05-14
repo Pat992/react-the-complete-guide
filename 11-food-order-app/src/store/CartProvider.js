@@ -10,8 +10,24 @@ const defaultCartState = {
 // Never change old snapshot, only create new states
 const cartReducer = (stateSnapshot, action) => {
     if (action.type === 'ADD_ITEM') {
-        const updatedItems = stateSnapshot.items.concat(action.item);
         const updatedTotal = stateSnapshot.amount + action.item.price * action.item.amount;
+
+        const existingItemIndex = stateSnapshot.items.findIndex((item) => item.id === action.item.id);
+        const existingCartItem = stateSnapshot.items[existingItemIndex];
+
+        let updatedItems;
+
+        if (existingCartItem) {
+            const updatedItem = {
+                ...existingCartItem,
+                amount: existingCartItem.amount + action.item.amount
+            }
+
+            updatedItems = [...stateSnapshot.items];
+            updatedItems[existingCartItem] = updatedItem;
+        } else {
+            updatedItems = stateSnapshot.items.concat(action.item);
+        }
 
         return {
             items: updatedItems,
