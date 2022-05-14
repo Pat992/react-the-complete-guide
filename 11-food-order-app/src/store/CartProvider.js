@@ -24,7 +24,9 @@ const cartReducer = (stateSnapshot, action) => {
             }
 
             updatedItems = [...stateSnapshot.items];
-            updatedItems[existingCartItem] = updatedItem;
+            updatedItems[existingItemIndex] = updatedItem;
+
+            console.log(updatedItems);
         } else {
             updatedItems = stateSnapshot.items.concat(action.item);
         }
@@ -34,7 +36,24 @@ const cartReducer = (stateSnapshot, action) => {
             amount: updatedTotal
         };
     } else if (action.type === 'REMOVE_ITEM') {
+        const existingItemIndex = stateSnapshot.items.findIndex((item) => item.id === action.id);
+        const existingCartItem = stateSnapshot.items[existingItemIndex];
 
+        const updatedTotalAmount = stateSnapshot.amount - existingCartItem.price;
+        let updatedItems;
+
+        if (existingCartItem.amount <= 1) {
+            updatedItems = stateSnapshot.items.filter(item => item.id !== action.id);
+        } else {
+            const updatedItem = { ...existingCartItem, amount: existingCartItem.amount - 1 }
+            updatedItems = [...stateSnapshot.items];
+            updatedItems[existingItemIndex] = updatedItem;
+
+        }
+        return {
+            items: updatedItems,
+            amount: updatedTotalAmount
+        };
     }
     return defaultCartState;
 };
