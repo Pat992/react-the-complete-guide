@@ -11,7 +11,7 @@ class UserFinder extends Component {
     static contextType = UsersContext;
 
     constructor(props, context) {
-        super();
+        super(props, context);
         this.state = {
             filteredUsers: this.context.users,
             searchTerm: ''
