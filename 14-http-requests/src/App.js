@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState, useCallback } from 'react';
 
 import MoviesList from './components/MoviesList';
 import './App.css';
@@ -8,7 +8,7 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
 
-  const fetchMoviesHandler = async () => {
+  const fetchMoviesHandler = useCallback(async () => {
     try {
       setIsLoading(true);
       setError(null);
@@ -31,7 +31,13 @@ const App = () => {
       setError('Something went wrong');
     }
     setIsLoading(false);
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchMoviesHandler();
+    // If empty array, this will only run if loaded for the first time
+    // Should still have dependencies
+  }, [fetchMoviesHandler]);
 
   return (
     <Fragment>
